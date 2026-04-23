@@ -1,0 +1,63 @@
+owner: finalmotionai
+repo: finalmotion-status
+
+sites:
+  - name: Frontend (finalmotion.ai)
+    url: https://finalmotion.ai
+    expectedStatusCodes:
+      - 200
+      - 301
+      - 302
+    maxResponseTime: 3000
+
+  - name: Backend API /health
+    url: https://api.finalmotion.ai/health/
+    expectedStatusCodes:
+      - 200
+    maxResponseTime: 2000
+
+  - name: Auth endpoint
+    url: https://finalmotion.ai/api/auth/session
+    expectedStatusCodes:
+      - 200
+    maxResponseTime: 3000
+
+  - name: Assistant API
+    url: https://api.finalmotion.ai/api/assistant/health
+    expectedStatusCodes:
+      - 200
+      - 404
+    maxResponseTime: 5000
+
+  - name: Stripe webhook endpoint
+    url: https://api.finalmotion.ai/api/webhooks/stripe
+    method: HEAD
+    expectedStatusCodes:
+      - 200
+      - 400
+      - 405
+    maxResponseTime: 2000
+
+status-website:
+  cname: status.finalmotion.ai
+  name: FinalMotion.ai Status
+  introTitle: "Service status for FinalMotion.ai"
+  introMessage: Real-time uptime and performance for FinalMotion.ai services.
+  customHeadHtml: |
+    <style>
+      footer.svelte-jbr799 { display: none !important; }
+    </style>
+  navbar:
+    - title: Status
+      href: /
+    - title: Website
+      href: https://finalmotion.ai
+    - title: Contact
+      href: https://finalmotion.ai/contact
+
+assignees:
+  - bdarnal
+
+skipDescriptionUpdate: true
+skipTopicUpdate: true
+skipPoweredByReadme: true
